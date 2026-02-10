@@ -1,27 +1,5 @@
-import { mutation, query } from "./_generated/server";
+import { mutation } from "./_generated/server";
 import { v } from "convex/values";
-
-export const verifyAlumni = query({
-  args: {
-    fullName: v.string(),
-    dob: v.string(),
-    batchYear: v.string(),
-  },
-  handler: async (ctx, args) => {
-    const alumni = await ctx.db
-      .query("alumni")
-      .filter((q) =>
-        q.and(
-          q.eq(q.field("fullName"), args.fullName),
-          q.eq(q.field("dob"), args.dob),
-          q.eq(q.field("batchYear"), args.batchYear)
-        )
-      )
-      .first();
-
-    return alumni;
-  },
-});
 
 export const addAlumni = mutation({
   args: {
@@ -77,11 +55,5 @@ export const clearAllAlumni = mutation({
       await ctx.db.delete(student._id);
     }
     return { deleted: allStudents.length };
-  },
-});
-
-export const getAllAlumni = query({
-  handler: async (ctx) => {
-    return await ctx.db.query("alumni").order("desc").collect();
   },
 });

@@ -64,6 +64,7 @@ export default function Home() {
             <option>2023-2024</option>
             <option>2024-2025</option>
             <option>2025-2026</option>
+            <option>2026-2027</option>
           </select>
 
           <button

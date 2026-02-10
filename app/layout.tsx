@@ -1,12 +1,24 @@
-import type { ReactNode } from "react";
-import "./globals.css"
-import { Providers } from "./providers";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "./globals.css";
+import { ConvexClientProvider } from "./ConvexClientProvider";
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Alumni Network",
+  description: "Alumni verification and networking platform",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-black text-white">
-        <Providers>{children}</Providers>
+      <body className={inter.className}>
+        <ConvexClientProvider>{children}</ConvexClientProvider>
       </body>
     </html>
   );
