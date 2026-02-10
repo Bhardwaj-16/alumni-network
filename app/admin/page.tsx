@@ -36,7 +36,6 @@ export default function AdminDashboard() {
   const addAlumni = useMutation(api.alumni.addAlumni);
   const deleteAlumni = useMutation(api.alumni.deleteAlumni);
 
-  // Liquid cursor effect
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
@@ -46,7 +45,6 @@ export default function AdminDashboard() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // Smooth cursor animation with momentum
   useEffect(() => {
     let animationFrameId: number;
 
@@ -54,19 +52,15 @@ export default function AdminDashboard() {
       const spring = 0.15;
       const friction = 0.75;
 
-      // Calculate spring force
       const dx = mousePosition.x - cursorRef.current.x;
       const dy = mousePosition.y - cursorRef.current.y;
 
-      // Update velocity
       cursorRef.current.vx += dx * spring;
       cursorRef.current.vy += dy * spring;
 
-      // Apply friction
       cursorRef.current.vx *= friction;
       cursorRef.current.vy *= friction;
 
-      // Update position
       cursorRef.current.x += cursorRef.current.vx;
       cursorRef.current.y += cursorRef.current.vy;
 
@@ -134,7 +128,6 @@ export default function AdminDashboard() {
       <div className={`min-h-screen flex items-center justify-center transition-colors duration-500 ${
         isDarkMode ? "bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900" : "bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50"
       }`}>
-        {/* Liquid cursor */}
         <div
           className="fixed w-32 h-32 rounded-full pointer-events-none z-50 mix-blend-screen"
           style={{
@@ -196,7 +189,6 @@ export default function AdminDashboard() {
     <div className={`min-h-screen transition-colors duration-500 ${
       isDarkMode ? "bg-gray-900" : "bg-gray-50"
     }`}>
-      {/* Liquid cursor */}
       <div
         className="fixed w-32 h-32 rounded-full pointer-events-none z-50 mix-blend-screen"
         style={{
@@ -208,7 +200,6 @@ export default function AdminDashboard() {
       />
 
       <div className="max-w-7xl mx-auto p-8 space-y-6">
-        {/* Header */}
         <div className={`backdrop-blur-xl p-6 rounded-2xl shadow-xl border transition-all duration-300 ${
           isDarkMode
             ? "bg-gray-800/50 border-gray-700/50"
@@ -231,7 +222,6 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Environment */}
         <div className={`backdrop-blur-xl p-6 rounded-2xl shadow-xl border transition-all duration-300 hover:shadow-2xl ${
           isDarkMode
             ? "bg-gray-800/50 border-gray-700/50"
@@ -261,7 +251,6 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Tabs */}
         <div className={`backdrop-blur-xl rounded-2xl shadow-xl border transition-all duration-300 overflow-hidden ${
           isDarkMode
             ? "bg-gray-800/50 border-gray-700/50"
@@ -461,7 +450,6 @@ export default function AdminDashboard() {
           </div>
         </div>
 
-        {/* Dangerous Zone */}
         <div className={`backdrop-blur-xl p-6 rounded-2xl shadow-xl border transition-all duration-300 ${
           isDarkMode
             ? "bg-red-900/20 border-red-800/50"
