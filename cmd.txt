@@ -1,0 +1,2 @@
+CONVEX_URL=https://tidy-possum-233.convex.cloud \
+npx ts-node --esm convex/import.ts    

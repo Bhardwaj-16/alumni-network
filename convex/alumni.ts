@@ -30,19 +30,21 @@ export const verifyAlumni = query({
     };
 
     const normalizedDob = normalizeDob(args.dob);
+    const normalizedName = args.fullName.trim().toLowerCase(); // 👈 normalize input name
 
     const alumni = await ctx.db
       .query("alumni")
-      .filter((q) =>
-        q.and(
-          q.eq(q.field("fullName"), args.fullName.trim()),
-          q.eq(q.field("dob"), normalizedDob),
-          q.eq(q.field("batchYear"), args.batchYear.trim())
-        )
-      )
-      .first();
+      .collect();
 
-    return alumni;
+    // Filter manually to allow case-insensitive name comparison
+    const match = alumni.find(
+      (a) =>
+        a.fullName.toLowerCase() === normalizedName &&
+        a.dob === normalizedDob &&
+        a.batchYear.trim() === args.batchYear.trim()
+    );
+
+    return match ?? null;
   },
 });
 
@@ -55,9 +57,9 @@ export const addAlumni = mutation({
   },
   handler: async (ctx, args) => {
     return await ctx.db.insert("alumni", {
-      fullName: args.fullName,
+      fullName: args.fullName.trim().toLowerCase(), // 👈 store as lowercase
       dob: args.dob,
-      batchYear: args.batchYear,
+      batchYear: args.batchYear.trim(),
       whatsappLink: args.whatsappLink,
     });
   },
@@ -86,7 +88,11 @@ export const bulkImportAlumni = mutation({
   handler: async (ctx, args) => {
     const results = [];
     for (const student of args.alumni) {
-      const id = await ctx.db.insert("alumni", student);
+      const id = await ctx.db.insert("alumni", {
+        ...student,
+        fullName: student.fullName.trim().toLowerCase(), // 👈 store as lowercase
+        batchYear: student.batchYear.trim(),
+      });
       results.push(id);
     }
     return { count: results.length, ids: results };

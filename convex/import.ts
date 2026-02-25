@@ -6,16 +6,17 @@ const client = new ConvexHttpClient(process.env.CONVEX_URL!);
 
 const alumni: any[] = [];
 
-fs.createReadStream("2009.csv")
+fs.createReadStream("public/alumni-data/2024-2025.csv")
   .pipe(csv())
   .on("data", async (row) => {
   if (!row.fullName || !row.dob) {
     return;
   }
 
-  const [day, month, year] = row.dob.split(".");
+  const cleanedDob = row.dob.replace(/\s+/g, "");
+  const [year, month, day] = cleanedDob.split("-");
 
-  const formattedDob = `${day.padStart(2, "0")}/${month.padStart(2, "0")}/${year}`;
+  const formattedDob = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
 
   await client.mutation(api.alumni.addAlumni, {
     fullName: row.fullName.trim(),
