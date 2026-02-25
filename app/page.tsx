@@ -22,34 +22,36 @@ export default function Home() {
   }, [alumni]);
 
   return (
-    <main className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 via-blue-50 to-purple-50 overflow-hidden">
+    <main className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 overflow-hidden">
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200/40 rounded-full blur-3xl animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-200/40 rounded-full blur-3xl animate-pulse delay-1000" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-pink-100/30 rounded-full blur-3xl" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-900/20 rounded-full blur-3xl animate-pulse delay-1000" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-indigo-900/10 rounded-full blur-3xl" />
       </div>
 
-      <div className="absolute inset-0 bg-[url('/school-bg.png')] bg-cover bg-center opacity-5" />
+      <div className="absolute inset-0 bg-[url('/school-bg.png')] bg-cover bg-center opacity-20" />
+
+      <div className="absolute inset-0 bg-slate-950/40" />
 
       <a
         href="https://smsmayurvihar.org/"
         className="absolute top-8 left-8 z-20 group"
       >
-        <div className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/60 backdrop-blur-2xl border border-white/80 hover:bg-white/70 hover:border-white/90 transition-all duration-300 shadow-lg shadow-black/5">
+        <div className="flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/10 backdrop-blur-2xl border border-white/20 hover:bg-white/15 hover:border-white/30 transition-all duration-300 shadow-lg shadow-black/20">
           <svg
-            className="w-4 h-4 transition-transform group-hover:-translate-x-1 text-slate-700"
+            className="w-4 h-4 transition-transform group-hover:-translate-x-1 text-slate-300"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg>
-          <span className="text-sm font-medium text-slate-700">Back</span>
+          <span className="text-sm font-medium text-slate-300">Back</span>
         </div>
       </a>
 
       <div className="absolute top-8 right-8 z-20">
-        <div className="p-2 rounded-2xl bg-white/60 backdrop-blur-2xl border border-white/80 shadow-lg shadow-black/5">
+        <div className="p-2 rounded-2xl bg-white/10 backdrop-blur-2xl border border-white/20 shadow-lg shadow-black/20">
           <img
             src="/favicon.png"
             className="h-10 w-10"
@@ -59,19 +61,19 @@ export default function Home() {
       </div>
 
       <div className="relative z-10 w-[90%] max-w-md">
-        <div className="absolute -inset-1 bg-gradient-to-r from-blue-200/60 via-purple-200/60 to-pink-200/60 rounded-3xl blur-2xl" />
+        <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 rounded-3xl blur-2xl" />
         
-        <div className="relative rounded-3xl bg-white/70 backdrop-blur-3xl border border-white/90 shadow-2xl shadow-black/5 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-white/20 to-transparent" />
+        <div className="relative rounded-3xl bg-slate-900/60 backdrop-blur-3xl border border-white/10 shadow-2xl shadow-black/40 overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-white/[0.02] to-transparent" />
           
-          <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/60" />
+          <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10" />
           
           <div className="relative p-8">
             <div className="mb-8 text-center">
-              <h1 className="text-3xl font-semibold bg-gradient-to-r from-slate-800 via-slate-700 to-slate-800 bg-clip-text text-transparent mb-2">
+              <h1 className="text-3xl font-semibold bg-gradient-to-r from-slate-100 via-slate-200 to-slate-100 bg-clip-text text-transparent mb-2">
                 Alumni Network
               </h1>
-              <p className="text-slate-600 text-sm">Verify your credentials to join</p>
+              <p className="text-slate-400 text-sm">Verify your credentials to join</p>
             </div>
 
             <div className="space-y-4">
@@ -81,9 +83,9 @@ export default function Home() {
                     placeholder="Full Name"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
-                    className="w-full rounded-2xl bg-white/50 backdrop-blur-xl px-5 py-4 outline-none border border-white/80 focus:border-blue-300 focus:bg-white/60 focus:ring-4 focus:ring-blue-100/50 transition-all duration-300 placeholder:text-slate-400 shadow-inner shadow-black/5 text-slate-700"
+                    className="w-full rounded-2xl bg-slate-800/60 backdrop-blur-xl px-5 py-4 outline-none border border-white/10 focus:border-blue-500/60 focus:bg-slate-800/80 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 placeholder:text-slate-500 shadow-inner shadow-black/20 text-slate-200"
                   />
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/30 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
                 </div>
               </div>
 
@@ -93,9 +95,9 @@ export default function Home() {
                     type="date"
                     value={dob}
                     onChange={(e) => setDob(e.target.value)}
-                    className="w-full rounded-2xl bg-white/50 backdrop-blur-xl px-5 py-4 outline-none border border-white/80 focus:border-blue-300 focus:bg-white/60 focus:ring-4 focus:ring-blue-100/50 transition-all duration-300 shadow-inner shadow-black/5 text-slate-700 [&::-webkit-calendar-picker-indicator]:opacity-60"
+                    className="w-full rounded-2xl bg-slate-800/60 backdrop-blur-xl px-5 py-4 outline-none border border-white/10 focus:border-blue-500/60 focus:bg-slate-800/80 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 shadow-inner shadow-black/20 text-slate-200 [&::-webkit-calendar-picker-indicator]:opacity-40 [&::-webkit-calendar-picker-indicator]:invert"
                   />
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/30 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
                 </div>
               </div>
 
@@ -104,24 +106,24 @@ export default function Home() {
                   <select
                     value={batchYear}
                     onChange={(e) => setBatchYear(e.target.value)}
-                    className="w-full rounded-2xl bg-white/50 backdrop-blur-xl px-5 py-4 outline-none border border-white/80 focus:border-blue-300 focus:bg-white/60 focus:ring-4 focus:ring-blue-100/50 transition-all duration-300 appearance-none cursor-pointer shadow-inner shadow-black/5 text-slate-700"
+                    className="w-full rounded-2xl bg-slate-800/60 backdrop-blur-xl px-5 py-4 outline-none border border-white/10 focus:border-blue-500/60 focus:bg-slate-800/80 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 appearance-none cursor-pointer shadow-inner shadow-black/20 text-slate-200"
                   >
-                    <option value="" className="bg-white">Select Batch Year</option>
-                      <option className="bg-white">2009-2010</option>
-                      <option className="bg-white">2010-2011</option>
-                      <option className="bg-white">2012-2013</option>
-                      <option className="bg-white">2013-2014</option>
-                      <option className="bg-white">2014-2015</option>
-                      <option className="bg-white">2015-2016</option>
-                      <option className="bg-white">2016-2017</option>
-                      <option className="bg-white">2017-2018</option>
-                      <option className="bg-white">2018-2019</option>
-                      <option className="bg-white">2019-2020</option>
-                      <option className="bg-white">2020-2021</option>
-                      <option className="bg-white">2021-2022</option>
-                      <option className="bg-white">2022-2023</option>
-                      <option className="bg-white">2023-2024</option>
-                      <option className="bg-white">2024-2025</option>
+                    <option value="" className="bg-slate-800 text-slate-400">Select Batch Year</option>
+                    <option className="bg-slate-800">2009-2010</option>
+                    <option className="bg-slate-800">2010-2011</option>
+                    <option className="bg-slate-800">2012-2013</option>
+                    <option className="bg-slate-800">2013-2014</option>
+                    <option className="bg-slate-800">2014-2015</option>
+                    <option className="bg-slate-800">2015-2016</option>
+                    <option className="bg-slate-800">2016-2017</option>
+                    <option className="bg-slate-800">2017-2018</option>
+                    <option className="bg-slate-800">2018-2019</option>
+                    <option className="bg-slate-800">2019-2020</option>
+                    <option className="bg-slate-800">2020-2021</option>
+                    <option className="bg-slate-800">2021-2022</option>
+                    <option className="bg-slate-800">2022-2023</option>
+                    <option className="bg-slate-800">2023-2024</option>
+                    <option className="bg-slate-800">2024-2025</option>
                   </select>
                   
                   <svg
@@ -133,7 +135,7 @@ export default function Home() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                   
-                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/30 to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
                 </div>
               </div>
 
@@ -141,9 +143,9 @@ export default function Home() {
                 onClick={() => setSubmitted(true)}
                 className="group relative w-full mt-6"
               >
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-300 via-purple-300 to-pink-300 rounded-2xl blur opacity-70 group-hover:opacity-100 transition duration-300" />
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 rounded-2xl blur opacity-50 group-hover:opacity-80 transition duration-300" />
                 
-                <div className="relative rounded-2xl bg-gradient-to-r from-blue-500 via-purple-500 to-purple-600 px-6 py-4 transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-xl shadow-lg">
+                <div className="relative rounded-2xl bg-gradient-to-r from-blue-600 via-purple-600 to-purple-700 px-6 py-4 transition-all duration-300 group-hover:scale-[1.02] group-hover:shadow-xl shadow-lg">
                   <span className="font-semibold text-white flex items-center justify-center gap-2">
                     Join WhatsApp Group
                     <svg
@@ -159,17 +161,17 @@ export default function Home() {
               </button>
 
               {submitted && alumni === null && (
-                <div className="mt-4 p-4 rounded-2xl bg-red-50/80 backdrop-blur-xl border border-red-200/80">
+                <div className="mt-4 p-4 rounded-2xl bg-red-950/60 backdrop-blur-xl border border-red-500/30">
                   <div className="flex items-start gap-3">
                     <svg
-                      className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5"
+                      className="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <p className="text-red-700 text-sm font-medium">
+                    <p className="text-red-400 text-sm font-medium">
                       Credentials not found. Please re-check your details.
                     </p>
                   </div>
@@ -178,7 +180,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-200/50 to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
         </div>
       </div>
     </main>

@@ -8,13 +8,36 @@ export const verifyAlumni = query({
     batchYear: v.string(),
   },
   handler: async (ctx, args) => {
+    const normalizeDob = (dob: string) => {
+      if (!dob) return "";
+
+      if (dob.includes("/")) {
+        const [d, m, y] = dob.split("/");
+        return `${d.padStart(2, "0")}/${m.padStart(2, "0")}/${y}`;
+      }
+
+      if (dob.includes(".")) {
+        const [d, m, y] = dob.split(".");
+        return `${d.padStart(2, "0")}/${m.padStart(2, "0")}/${y}`;
+      }
+
+      if (dob.includes("-")) {
+        const [y, m, d] = dob.split("-");
+        return `${d.padStart(2, "0")}/${m.padStart(2, "0")}/${y}`;
+      }
+
+      return dob;
+    };
+
+    const normalizedDob = normalizeDob(args.dob);
+
     const alumni = await ctx.db
       .query("alumni")
       .filter((q) =>
         q.and(
-          q.eq(q.field("fullName"), args.fullName),
-          q.eq(q.field("dob"), args.dob),
-          q.eq(q.field("batchYear"), args.batchYear)
+          q.eq(q.field("fullName"), args.fullName.trim()),
+          q.eq(q.field("dob"), normalizedDob),
+          q.eq(q.field("batchYear"), args.batchYear.trim())
         )
       )
       .first();

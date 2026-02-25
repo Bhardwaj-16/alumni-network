@@ -344,18 +344,35 @@ export default function AdminDashboard() {
                     setFormData({ ...formData, dob: e.target.value })
                   }
                 />
-                <input
-                  placeholder="Batch Year (e.g., 2024)"
+                {/* Batch Year Dropdown */}
+                <select
                   className={`w-full px-4 py-3 rounded-xl outline-none transition-all duration-300 focus:ring-2 ${
                     isDarkMode
-                      ? "bg-gray-700/50 border border-gray-600 text-white placeholder-gray-400 focus:ring-purple-500"
-                      : "bg-white border border-gray-300 text-gray-900 placeholder-gray-500 focus:ring-blue-500"
+                      ? "bg-gray-700/50 border border-gray-600 text-white focus:ring-purple-500"
+                      : "bg-white border border-gray-300 text-gray-900 focus:ring-blue-500"
                   }`}
                   value={formData.batchYear}
                   onChange={(e) =>
                     setFormData({ ...formData, batchYear: e.target.value })
                   }
-                />
+                >
+                  <option value="" disabled>Select Batch Year</option>
+                  <option className="bg-white text-black">2009-2010</option>
+                  <option className="bg-white text-black">2010-2011</option>
+                  <option className="bg-white text-black">2012-2013</option>
+                  <option className="bg-white text-black">2013-2014</option>
+                  <option className="bg-white text-black">2014-2015</option>
+                  <option className="bg-white text-black">2015-2016</option>
+                  <option className="bg-white text-black">2016-2017</option>
+                  <option className="bg-white text-black">2017-2018</option>
+                  <option className="bg-white text-black">2018-2019</option>
+                  <option className="bg-white text-black">2019-2020</option>
+                  <option className="bg-white text-black">2020-2021</option>
+                  <option className="bg-white text-black">2021-2022</option>
+                  <option className="bg-white text-black">2022-2023</option>
+                  <option className="bg-white text-black">2023-2024</option>
+                  <option className="bg-white text-black">2024-2025</option>
+                </select>
                 <input
                   placeholder="WhatsApp Link (optional)"
                   className={`w-full px-4 py-3 rounded-xl outline-none transition-all duration-300 focus:ring-2 ${
