@@ -116,7 +116,7 @@ export default function Home() {
                       <input
                         placeholder="Full Name"
                         value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
+                        onChange={(e) => setFullName(e.target.value.toLowerCase())}
                         className="w-full rounded-2xl bg-slate-800/60 backdrop-blur-xl px-5 py-4 outline-none border border-white/10 focus:border-blue-500/60 focus:bg-slate-800/80 focus:ring-4 focus:ring-blue-500/10 transition-all duration-300 placeholder:text-slate-500 shadow-inner shadow-black/20 text-slate-200"
                       />
                       <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />
