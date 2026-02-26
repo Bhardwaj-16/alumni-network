@@ -14,7 +14,7 @@ fs.createReadStream("public/alumni-data/2024-2025.csv")
   }
 
   const cleanedDob = row.dob.replace(/\s+/g, "");
-  const [year, month, day] = cleanedDob.split("-");
+  const [day, month, year] = cleanedDob.split("-");
 
   const formattedDob = `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`;
 

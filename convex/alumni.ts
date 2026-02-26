@@ -10,38 +10,32 @@ export const verifyAlumni = query({
   handler: async (ctx, args) => {
     const normalizeDob = (dob: string) => {
       if (!dob) return "";
-
       if (dob.includes("/")) {
         const [d, m, y] = dob.split("/");
         return `${d.padStart(2, "0")}/${m.padStart(2, "0")}/${y}`;
       }
-
       if (dob.includes(".")) {
         const [d, m, y] = dob.split(".");
         return `${d.padStart(2, "0")}/${m.padStart(2, "0")}/${y}`;
       }
-
       if (dob.includes("-")) {
         const [y, m, d] = dob.split("-");
         return `${d.padStart(2, "0")}/${m.padStart(2, "0")}/${y}`;
       }
-
       return dob;
     };
 
-    const normalizedDob = normalizeDob(args.dob);
-    const normalizedName = args.fullName.trim().toLowerCase(); // 👈 normalize input name
+    const normalizedInputName = args.fullName.trim().toLowerCase();
+    const normalizedInputDob = normalizeDob(args.dob);
+    const normalizedInputBatch = args.batchYear.trim();
 
-    const alumni = await ctx.db
-      .query("alumni")
-      .collect();
+    const alumni = await ctx.db.query("alumni").collect();
 
-    // Filter manually to allow case-insensitive name comparison
     const match = alumni.find(
       (a) =>
-        a.fullName.toLowerCase() === normalizedName &&
-        a.dob === normalizedDob &&
-        a.batchYear.trim() === args.batchYear.trim()
+        a.fullName.trim().toLowerCase() === normalizedInputName &&  // 👈 normalize DB value too
+        normalizeDob(a.dob) === normalizedInputDob &&               // 👈 normalize DB dob too
+        a.batchYear.trim() === normalizedInputBatch
     );
 
     return match ?? null;

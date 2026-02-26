@@ -57,3 +57,20 @@ export const clearAllAlumni = mutation({
     return { deleted: allStudents.length };
   },
 });
+
+export const migrateNamesToLowercase = mutation({
+  handler: async (ctx) => {
+    const allAlumni = await ctx.db.query("alumni").collect();
+    let updated = 0;
+
+    for (const alumni of allAlumni) {
+      const lowercasedName = alumni.fullName.trim().toLowerCase();
+      if (alumni.fullName !== lowercasedName) {
+        await ctx.db.patch(alumni._id, { fullName: lowercasedName });
+        updated++;
+      }
+    }
+
+    return { total: allAlumni.length, updated };
+  },
+});
